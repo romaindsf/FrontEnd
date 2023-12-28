@@ -7,6 +7,7 @@ const categories = await responseCategories.json();
 //Déclaration des variables globales
 const divGallery = document.querySelector(".gallery");
 const btnCategories = document.querySelectorAll(".btn");
+let loggedId = window.localStorage.getItem("logId");
 
 if (loggedId != null) {
     //affichage de logout quand on est connecté
