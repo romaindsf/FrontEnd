@@ -91,7 +91,7 @@ for (let i = 0; i< projects.length; i++) {
     const imgElement = document.createElement("img");
     imgElement.src = projects[i].imageUrl;
     const trashCan = document.createElement("i")
-    trashCan.classList.add("fa-regular", "fa-trash-can");
+    trashCan.classList.add("fa-solid", "fa-trash-can");
     gridThumbnail.appendChild(gridElement);
     gridElement.appendChild(imgElement);
     gridElement.appendChild(trashCan)
