@@ -84,6 +84,12 @@ iconCloseModal.addEventListener("click", () => {
     popupBackground.style.display = "none";
 });
 
+popupBackground.addEventListener("click", (event) => {
+    if (event.target === popupBackground) {
+        popupBackground.style.display = "none";
+    }
+})
+
 //générer les miniatures dans le grid
 const gridThumbnail = document.querySelector(".grid_thumbnail")
 for (let i = 0; i< projects.length; i++) {
