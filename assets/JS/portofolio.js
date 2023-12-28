@@ -33,6 +33,7 @@ if (loggedId != null) {
     });
 };
 
+//fonctions
 function genererTravaux(projects) {
     for (let i = 0; i< projects.length; i++) {
         const projetElement = document.createElement("figure");
