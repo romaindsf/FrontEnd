@@ -47,12 +47,12 @@ function displayEditBanner () {
     document.body.prepend(editionBanner);   //à la place de .appendChild, place l'élément enfant en premier
 };
 
-function displayModifs (mesProjets) {
+function displayModifs (portfolio) {
     const linkModifs = document.createElement("a");
     linkModifs.innerHTML += `<i class="fa-regular fa-pen-to-square"></i>modifier`;
     linkModifs.href = "#";
     linkModifs.classList.add("btnOpenModal");
-    mesProjets.appendChild(linkModifs);
+    portfolio.appendChild(linkModifs);
 };
 
 function hideFilterButtons (btnCategories) {
@@ -64,7 +64,7 @@ function hideFilterButtons (btnCategories) {
 function displayPopUp () {
     const btnOpenModal = document.querySelector(".btnOpenModal");
     const popupBackground = document.querySelector(".popupBackground");
-    const iconCloseModal = document.querySelector(".close_modal")
+    const iconCloseModal = document.querySelector(".close_modal");
     btnOpenModal.addEventListener("click", () => {
         popupBackground.style.display = "block";
     });
@@ -76,21 +76,21 @@ function displayPopUp () {
             popupBackground.style.display = "none";
         };
     });
-}
+};
 
 function generateGridPopUp (projects) {
-    const gridThumbnail = document.querySelector(".grid_thumbnail")
+    const gridThumbnail = document.querySelector(".grid_thumbnail");
     for (let i = 0; i< projects.length; i++) {
         const gridElement = document.createElement("div");
         const imgElement = document.createElement("img");
         imgElement.src = projects[i].imageUrl;
-        const trashCan = document.createElement("i")
+        const trashCan = document.createElement("i");
         trashCan.classList.add("fa-solid", "fa-trash-can");
         gridThumbnail.appendChild(gridElement);
         gridElement.appendChild(imgElement);
         gridElement.appendChild(trashCan);
     };
-}
+};
 
 export {
     genererTravaux,

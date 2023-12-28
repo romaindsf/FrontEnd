@@ -17,7 +17,7 @@ const categories = await responseCategories.json();
 
 let logs = window.localStorage.getItem("logs");
 const divGallery = document.querySelector(".gallery");
-const mesProjets = document.querySelector("#portfolio");
+const portfolio = document.querySelector("#portfolio");
 const btnCategories = document.querySelectorAll(".btn");
 const btnAll = document.querySelector(".filtres .btn:first-child");
 const logIn = document.querySelector('nav a[href="./login.html"]');
@@ -28,7 +28,7 @@ filterButton(categories, btnCategories, btnAll);
 if (logs != null) {
     displayLogout(logIn);
     displayEditBanner();
-    displayModifs(mesProjets);
+    displayModifs(portfolio);
     hideFilterButtons(btnCategories);
     displayPopUp();
     generateGridPopUp(projects);
