@@ -2,27 +2,27 @@
 const emailRegex = /\S+@\S+\.\S+/
 
 //Fonction tentative de login
-async function attemptLogIn(event) {
+async function attemptLogIn(event) {    //async pour utiliser await fetch dans la fonction
     const logInfo = {
         email: event.target.querySelector("[name=email]").value,
         password: event.target.querySelector("[name=password]").value,
-    };
-    const chargeUtile = JSON.stringify(logInfo);
-    const attemptLogIn = await fetch("http://localhost:5678/api/users/login", {
-        method: "POST",
-        body: chargeUtile,
-        headers: {"Content-Type": "application/json"},
-    });
-    if(attemptLogIn.status === 200) {
-        window.localStorage.setItem("mesLogs", logInfo)
-        window.location.href = "index.html";
-    } else {
-        console.log("identifiant ou mot de passe incorrecte")
-        document.querySelector("[name=email]")
+        };                              //récupération des données entrée
+        const attemptLogIn = await fetch("http://localhost:5678/api/users/login", {
+            method: "POST",
+            body: JSON.stringify(logInfo),
+            headers: {"Content-Type": "application/json"},
+        });                         //écriture de la requête, deux arguments (fetch,{method, body, headers})
+        if(attemptLogIn.status === 200) {   //si la requête est un succès :
+            const logs = await attemptLogIn.json();
+            window.localStorage.setItem("logs", logs.token);
+            window.location.href = "index.html";  // rediriger vers la page d'acceuil
+        } else {
+            console.log("Erreur dans l’identifiant ou le mot de passe")
+            document.querySelector("[name=email]")
             .classList.add("invalid")
-        document.querySelector("[name=password]")
-            .classList.add("invalid")
-    }
+            document.querySelector("[name=password]")
+            .classList.add("invalid")       //indicateurs d'erreur (message à rajouter)
+        }
 }
 
 //Formulaire

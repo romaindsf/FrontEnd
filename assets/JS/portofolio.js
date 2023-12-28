@@ -7,14 +7,14 @@ const categories = await responseCategories.json();
 //Déclaration des variables globales
 const divGallery = document.querySelector(".gallery");
 const btnCategories = document.querySelectorAll(".btn");
-let loggedId = window.localStorage.getItem("logId");
+let logs = window.localStorage.getItem("logs");
 
-if (loggedId != null) {
+if (logs != null) {
     //affichage de logout quand on est connecté
-    const logIn = document.querySelector('nav a[href="./assets/login.html"]');
+    const logIn = document.querySelector('nav a[href="./login.html"]');
     logIn.innerHTML = `<a href=#>logout</a>`;
     logIn.addEventListener("click", ()=> {
-        window.localStorage.removeItem("logId", "token");
+        window.localStorage.removeItem("logs");
         location.reload();
     });
     //affichage de link "modifier"
