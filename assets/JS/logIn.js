@@ -2,27 +2,27 @@
 const emailRegex = /\S+@\S+\.\S+/
 
 //Fonction tentative de login
-async function attemptLogIn(event) {    //async pour utiliser await fetch dans la fonction
+async function attemptLogIn(event) {
     const logInfo = {
         email: event.target.querySelector("[name=email]").value,
         password: event.target.querySelector("[name=password]").value,
-        };                              //récupération des données entrée
-        const chargeUtile = JSON.stringify(logInfo);    //conversion objet JS en JSON string
-        const attemptLogIn = await fetch("http://localhost:5678/api/users/login", {
-            method: "POST",
-            body: chargeUtile,
-            headers: {"Content-Type": "application/json"},
-        });                         //écriture de la requête, deux arguments (fetch,{method, body, headers})
-        if(attemptLogIn.status === 200) {   //si la requête est un succès :
-            window.location.href = "../index.html";  // rediriger vers la page d'acceuil
-            window.localStorage.setItem("mesLogs", logInfo) //sauvergarde des bons identifiants
-        } else {
-            console.log("identifiant ou mot de passe incorrecte")
-            document.querySelector("[name=email]")
+    };
+    const chargeUtile = JSON.stringify(logInfo);
+    const attemptLogIn = await fetch("http://localhost:5678/api/users/login", {
+        method: "POST",
+        body: chargeUtile,
+        headers: {"Content-Type": "application/json"},
+    });
+    if(attemptLogIn.status === 200) {
+        window.localStorage.setItem("mesLogs", logInfo)
+        window.location.href = "index.html";
+    } else {
+        console.log("identifiant ou mot de passe incorrecte")
+        document.querySelector("[name=email]")
             .classList.add("invalid")
-            document.querySelector("[name=password]")
-            .classList.add("invalid")       //indicateurs d'erreur (message à rajouter)
-        }
+        document.querySelector("[name=password]")
+            .classList.add("invalid")
+    }
 }
 
 //Formulaire
