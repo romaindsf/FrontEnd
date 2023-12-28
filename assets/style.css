@@ -293,10 +293,13 @@ footer nav ul {
 }
 
 .grid_thumbnail {
-	margin: 45px 80px;
+	margin: 45px 80px 38px 80px;
 	display: grid;
 	gap: 10px;
   	grid-template-columns: repeat(5, 1fr);
+	padding-bottom: 67px;
+	border-bottom: 1px solid #B3B3B3;
+	;
 }
 
 .grid_thumbnail > div{
@@ -317,4 +320,14 @@ footer nav ul {
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+
+.popup button {
+	background-color: #1D6154;
+	font-family: 'Syne';
+	font-size: 14px;
+	font-weight: 700;
+	color: white;
+	border-radius: 50px;
+	padding: 10px 50px;
 }
