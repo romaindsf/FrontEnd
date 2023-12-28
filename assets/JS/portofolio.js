@@ -17,6 +17,12 @@ if (logs != null) {
         window.localStorage.removeItem("logs");
         location.reload();
     });
+
+    //affichage de la barre verticale "mode édition"
+    const editionBanner = document.createElement("p");
+    editionBanner.innerHTML += `<i class="fa-regular fa-pen-to-square"></i>Mode edition`;
+    editionBanner.classList.add("edit_banner")
+    document.body.prepend(editionBanner);   //à la place de .appendChild, place l'élément enfant en premier
     //affichage de link "modifier"
     const linkModifs = document.createElement("a");
     linkModifs.innerHTML += `<i class="fa-regular fa-pen-to-square"></i>modifier`;
@@ -87,8 +93,8 @@ iconCloseModal.addEventListener("click", () => {
 popupBackground.addEventListener("click", (event) => {
     if (event.target === popupBackground) {
         popupBackground.style.display = "none";
-    }
-})
+    };
+});
 
 //générer les miniatures dans le grid
 const gridThumbnail = document.querySelector(".grid_thumbnail")
@@ -100,5 +106,7 @@ for (let i = 0; i< projects.length; i++) {
     trashCan.classList.add("fa-solid", "fa-trash-can");
     gridThumbnail.appendChild(gridElement);
     gridElement.appendChild(imgElement);
-    gridElement.appendChild(trashCan)
+    gridElement.appendChild(trashCan);
 };
+
+//Suppression de travaux existants

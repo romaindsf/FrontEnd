@@ -50,8 +50,8 @@ table {
 /* declare la variable couleur principal */
 :root {
 	--main-color: #1D6154
-  }
-body {
+}
+.main_container {
 	max-width: 1140px;
 	margin:auto;
 	font-family: 'Work Sans' ;
@@ -97,6 +97,10 @@ h3{
 	font-family: 'Work Sans';
 	font-weight: 400;
 	font-size: 26px;
+}
+
+button, a {
+	cursor: pointer;
 }
 
 nav ul {
@@ -292,6 +296,16 @@ footer nav ul {
 	margin-bottom: 10px;
 }
 
+.edit_banner {
+	width: 100%;
+	max-width: none !important;
+	text-align: center;
+	background-color: black;
+	color: white;
+	font-size: 16px;
+	padding: 20px;
+}
+
 .grid_thumbnail {
 	margin: 45px 80px 38px 80px;
 	display: grid;
@@ -299,7 +313,6 @@ footer nav ul {
   	grid-template-columns: repeat(5, 1fr);
 	padding-bottom: 67px;
 	border-bottom: 1px solid #B3B3B3;
-	;
 }
 
 .grid_thumbnail > div{
