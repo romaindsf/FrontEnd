@@ -8,6 +8,7 @@ import {
     displayPopUp,
     generateGridPopUp,
     removeProject,
+    displayAddProjectPopUp,
 } from "./functions.js";
 
 
@@ -22,6 +23,8 @@ const portfolio = document.querySelector("#portfolio");
 const btnCategories = document.querySelectorAll(".btn");
 const btnAll = document.querySelector(".filtres .btn:first-child");
 const logIn = document.querySelector('nav a[href="./login.html"]');
+const popupBackground = document.querySelector(".popupBackground");
+const iconCloseModal = document.querySelector(".close_modal");
 
 generrateportfolio(projects, divGallery);
 
@@ -30,9 +33,29 @@ if (logs != null) {
     displayEditBanner();
     displayModifs(portfolio);
     hideFilterButtons(btnCategories);
-    displayPopUp();
+    displayPopUp(popupBackground, iconCloseModal);
     generateGridPopUp(projects);
     removeProject(projects,logs);
+    displayAddProjectPopUp(popupBackground, iconCloseModal);
 } else {
     filterButton(categories, btnCategories, btnAll);
 };
+
+/*
+function displayPopUp () {
+    const btnOpenModal = document.querySelector(".btnOpenModal");
+    const popupBackground = document.querySelector(".popupBackground");
+    const iconCloseModal = document.querySelector(".close_modal");
+    btnOpenModal.addEventListener("click", () => {
+        popupBackground.style.display = "block";
+    });
+    iconCloseModal.addEventListener("click", () => {
+        popupBackground.style.display = "none";
+    });
+    popupBackground.addEventListener("click", (event) => {
+        if (event.target === popupBackground) {
+            popupBackground.style.display = "none";
+        };
+    });
+};
+*/

@@ -264,7 +264,8 @@ footer nav ul {
 }
 
 /* popup */
-.popupBackground {
+.popupBackground,
+.add_project_background {
 	display: none;
 	position: fixed;
 	top: 0;
@@ -274,7 +275,8 @@ footer nav ul {
 	background-color: #0000004D;
 }
 
-.popup {
+.popup,
+.add_project_popup {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -295,6 +297,7 @@ footer nav ul {
 	margin-left: auto;
 	padding: 3px;
 	margin-bottom: 10px;
+	cursor: pointer;
 }
 
 .edit_banner {
@@ -334,6 +337,7 @@ footer nav ul {
 	position: absolute;
 	top: 0;
 	right: 0;
+	cursor: pointer;
 }
 
 .popup button {

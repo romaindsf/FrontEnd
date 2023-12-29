@@ -61,10 +61,8 @@ function hideFilterButtons (btnCategories) {
     });
 };
 
-function displayPopUp () {
+function displayPopUp (popupBackground, iconCloseModal) {
     const btnOpenModal = document.querySelector(".btnOpenModal");
-    const popupBackground = document.querySelector(".popupBackground");
-    const iconCloseModal = document.querySelector(".close_modal");
     btnOpenModal.addEventListener("click", () => {
         popupBackground.style.display = "block";
     });
@@ -122,6 +120,23 @@ function removeProject(projects, logs) {
     };
 };
 
+function displayAddProjectPopUp (popupBackground, iconCloseModal) {
+    const btnAddProject = document.querySelector(".popup button");
+    const addProjectBackground = document.querySelector(".add_project_background");
+    btnAddProject.addEventListener("click", () => {
+        popupBackground.style.display = "none";
+        addProjectBackground.style.display = "block";
+    })
+    iconCloseModal.addEventListener("click", () => {
+        addProjectBackground.style.display = "none";
+    });
+    addProjectBackground.addEventListener("click", (event) => {
+        if (event.target === popupBackground) {
+            addProjectBackground.style.display = "none";
+        };
+    });
+}
+
 export {
     generrateportfolio,
     filterButton,
@@ -132,4 +147,5 @@ export {
     displayPopUp,
     generateGridPopUp,
     removeProject,
+    displayAddProjectPopUp,
 };
