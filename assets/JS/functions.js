@@ -1,4 +1,4 @@
-function genererTravaux (projects, divGallery) {
+function generrateportfolio (projects, divGallery) {
     for (let i = 0; i< projects.length; i++) {
         const projetElement = document.createElement("figure");
         projetElement.dataset.category = projects[i].category.id;
@@ -92,8 +92,42 @@ function generateGridPopUp (projects) {
     };
 };
 
+/*
+supprimer des projets depuis la modal en cliquant sur l'icone trashcan
+    -seletionne l'icone trash
+    -lier icône trash au projet respectif
+        (chaque projet a deja un data-category)
+        -verification admin est connecté
+            (s'inspirer du log in, if logs != null)
+        -requête delete a l'api du projet
+            (regarder swagger)
+        -enleve projet (display none) du portfolio
+            (s'inspirer des btn categories)
+
+
+
+*/
+
+function removeProject(projects, logs) {
+    const allTrashIcons = document.querySelectorAll(".grid_thumbnail i");
+    for (let i = 0; i< projects.length; i++) {
+        allTrashIcons[i].dataset.id = projects[i].id;
+        allTrashIcons[i].addEventListener("click", async (event) => {
+            if (logs != null) {
+                const resquestRemoveProject = await fetch(`http://localhost:5678/api/works/${event.target.dataset.id}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Authorization": "logs",
+                        "Content-Type": "application/json"
+                    },
+                });
+            };
+        });
+    };
+};
+
 export {
-    genererTravaux,
+    generrateportfolio,
     filterButton,
     displayLogout,
     displayEditBanner,
@@ -101,4 +135,7 @@ export {
     hideFilterButtons,
     displayPopUp,
     generateGridPopUp,
+    removeProject,
 };
+
+//http://localhost:5678/images/appartement-paris-v1651287270508.png
