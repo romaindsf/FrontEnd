@@ -61,17 +61,18 @@ function hideFilterButtons (btnCategories) {
     });
 };
 
-function displayPopUp (popupBackground, iconCloseModal) {
+function displayPopUp (popupBackground) {
     const btnOpenModal = document.querySelector(".btnOpenModal");
+    const iconCloseModal = document.querySelector(".close_modal");
     btnOpenModal.addEventListener("click", () => {
-        popupBackground.style.display = "block";
+        popupBackground.classList.add("active");
     });
     iconCloseModal.addEventListener("click", () => {
-        popupBackground.style.display = "none";
+        popupBackground.classList.remove("active");
     });
     popupBackground.addEventListener("click", (event) => {
         if (event.target === popupBackground) {
-            popupBackground.style.display = "none";
+            popupBackground.classList.remove("active")
         };
     });
 };
@@ -120,19 +121,21 @@ function removeProject(projects, logs) {
     };
 };
 
-function displayAddProjectPopUp (popupBackground, iconCloseModal) {
+function displayAddProjectPopUp (popupBackground) {
     const btnAddProject = document.querySelector(".popup button");
     const addProjectBackground = document.querySelector(".add_project_background");
+    const closepopup = document.querySelector(".close_popup")
     btnAddProject.addEventListener("click", () => {
-        popupBackground.style.display = "none";
-        addProjectBackground.style.display = "block";
+        popupBackground.classList.remove("active");
+        addProjectBackground.classList.add("active");
     })
-    iconCloseModal.addEventListener("click", () => {
-        addProjectBackground.style.display = "none";
+    closepopup.addEventListener("click", () => {
+        console.log("clique!");
+        addProjectBackground.classList.remove("active");
     });
     addProjectBackground.addEventListener("click", (event) => {
         if (event.target === popupBackground) {
-            addProjectBackground.style.display = "none";
+            addProjectBackground.classList.remove("active");
         };
     });
 }

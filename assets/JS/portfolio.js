@@ -24,7 +24,6 @@ const btnCategories = document.querySelectorAll(".btn");
 const btnAll = document.querySelector(".filtres .btn:first-child");
 const logIn = document.querySelector('nav a[href="./login.html"]');
 const popupBackground = document.querySelector(".popupBackground");
-const iconCloseModal = document.querySelector(".close_modal");
 
 generrateportfolio(projects, divGallery);
 
@@ -33,10 +32,10 @@ if (logs != null) {
     displayEditBanner();
     displayModifs(portfolio);
     hideFilterButtons(btnCategories);
-    displayPopUp(popupBackground, iconCloseModal);
+    displayPopUp(popupBackground);
     generateGridPopUp(projects);
     removeProject(projects,logs);
-    displayAddProjectPopUp(popupBackground, iconCloseModal);
+    displayAddProjectPopUp(popupBackground);
 } else {
     filterButton(categories, btnCategories, btnAll);
 };
