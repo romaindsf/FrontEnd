@@ -134,7 +134,7 @@ function displayAddProjectPopUp (popupBackground) {
         addProjectBackground.classList.remove("active");
     });
     addProjectBackground.addEventListener("click", (event) => {
-        if (event.target === popupBackground) {
+        if (event.target === addProjectBackground) {
             addProjectBackground.classList.remove("active");
         };
     });
