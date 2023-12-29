@@ -92,36 +92,32 @@ function generateGridPopUp (projects) {
     };
 };
 
-/*
-supprimer des projets depuis la modal en cliquant sur l'icone trashcan
-    -seletionne l'icone trash
-    -lier icône trash au projet respectif
-        (chaque projet a deja un data-category)
-        -verification admin est connecté
-            (s'inspirer du log in, if logs != null)
-        -requête delete a l'api du projet
-            (regarder swagger)
-        -enleve projet (display none) du portfolio
-            (s'inspirer des btn categories)
-
-
-
-*/
-
 function removeProject(projects, logs) {
+    const listProjet = document.querySelectorAll(".gallery figure");
+    const listThumbnail = document.querySelectorAll(".grid_thumbnail div");
     const allTrashIcons = document.querySelectorAll(".grid_thumbnail i");
     for (let i = 0; i< projects.length; i++) {
+        listProjet[i].dataset.id = projects[i].id;
+        listThumbnail[i].dataset.id = projects[i].id;
         allTrashIcons[i].dataset.id = projects[i].id;
         allTrashIcons[i].addEventListener("click", async (event) => {
-            if (logs != null) {
-                const resquestRemoveProject = await fetch(`http://localhost:5678/api/works/${event.target.dataset.id}`, {
-                    method: "DELETE",
-                    headers: {
-                        "Authorization": "logs",
-                        "Content-Type": "application/json"
-                    },
-                });
-            };
+            await fetch(`http://localhost:5678/api/works/${event.target.dataset.id}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${logs}`,
+                    "Content-Type": "application/json"
+                },
+            });
+            listThumbnail.forEach(thumbnail => {
+                if (event.target.dataset.id === thumbnail.dataset.id) {
+                    thumbnail.remove();
+                };
+            });
+            listProjet.forEach(projet => {
+                if (event.target.dataset.id === projet.dataset.id) {
+                    projet.remove();
+                };
+            });
         });
     };
 };
@@ -137,5 +133,3 @@ export {
     generateGridPopUp,
     removeProject,
 };
-
-//http://localhost:5678/images/appartement-paris-v1651287270508.png
