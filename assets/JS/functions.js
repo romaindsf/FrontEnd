@@ -125,14 +125,18 @@ function displayAddProjectPopUp (popupBackground) {
     const btnAddProject = document.querySelector(".popup button");
     const addProjectBackground = document.querySelector(".add_project_background");
     const closepopup = document.querySelector(".close_popup")
+    const goBack = document.querySelector(".fa-arrow-left")
     btnAddProject.addEventListener("click", () => {
         popupBackground.classList.remove("active");
         addProjectBackground.classList.add("active");
     })
     closepopup.addEventListener("click", () => {
-        console.log("clique!");
         addProjectBackground.classList.remove("active");
     });
+    goBack.addEventListener("click", () => {
+        addProjectBackground.classList.remove("active");
+        popupBackground.classList.add("active");
+    })
     addProjectBackground.addEventListener("click", (event) => {
         if (event.target === addProjectBackground) {
             addProjectBackground.classList.remove("active");

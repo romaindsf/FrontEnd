@@ -73,8 +73,8 @@
 	</footer>
 	<div class="popupBackground">
 		<div class="popup">
-			<div class="close_modal">
-				<i class="fa-solid fa-xmark"></i>
+			<div class="nav_popup">
+				<i class="close_modal fa-solid fa-xmark"></i>
 			</div>
 			<h3>Galerie photo</h3>
 			<div class="grid_thumbnail">
@@ -85,25 +85,30 @@
 	</div>
 	<div class="add_project_background">
 		<div class="add_project_popup">
-			<div class="close_popup">
-				<i class="fa-solid fa-xmark"></i>
+			<div class="nav_add_project">
+				<i class="fa-solid fa-arrow-left"></i>
+				<i class="close_popup fa-solid fa-xmark"></i>
 			</div>
 			<section id="add_project">
 				<h3>Ajout photo</h3>
-				
+				<div class="add_picture">
+					<i class="fa-regular fa-image"></i>
+					<h4>+ Ajouter photo</h4>
+					<p>jpg, png : 4mo max</p>
+				</div>
 				<form action="#" method="post">
 					<label for="title">Titre</label>
 					<input type="text" id="title" name="title">
 					<label for="category">Catégorie</label>
 					<select name="category" id="category">
+						<option value="" hidden></option>
 						<option value="1">Objets</option>
 						<option value="2">Appartements</option>
 						<option value="2">Hotels & restaurants</option>
 					</select>
-					<input type="submit" value="Valider">
 				</form>
+				<input type="submit" value="Valider">
 			</section>
-			
 		</div>
 	</div>
 </div>
