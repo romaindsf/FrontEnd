@@ -373,6 +373,10 @@ footer nav ul {
 	margin: 0 55px;
 }
 
+#add_project .add_picture {
+	cursor: pointer;
+}
+
 #add_project h3 {
 	margin: 10px 0 36px 0;
 }
@@ -383,6 +387,7 @@ footer nav ul {
 }
 
 #add_project select {
+	cursor: pointer;
 	-webkit-appearance: none;
   	-moz-appearance: none;
   	appearance: none;
