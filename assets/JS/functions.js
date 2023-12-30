@@ -144,11 +144,20 @@ function displayAddProjectPopUp (popupBackground) {
     });
 }
 
-function addProject() {
+/*
+function addProject(event) {
+    const addProjectForm = document.getElementById("add_project");
     const newProject = {
-        
-    }
-}
+        image: event.target.querySelector("[name=image]").value,
+        title: event.target.querySelector("[name=title]").value,
+        category: event.target.querySelector("[name=category]").value,
+    };
+    addProjectForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        console.log(newProject)
+    })
+};
+*/
 
 export {
     generrateportfolio,
@@ -161,5 +170,4 @@ export {
     generateGridPopUp,
     removeProject,
     displayAddProjectPopUp,
-    addProject,
 };

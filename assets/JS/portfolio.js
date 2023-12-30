@@ -9,7 +9,6 @@ import {
     generateGridPopUp,
     removeProject,
     displayAddProjectPopUp,
-    addProject,
 } from "./functions.js";
 
 
@@ -41,21 +40,22 @@ if (logs != null) {
     filterButton(categories, btnCategories, btnAll);
 };
 
-/*
-function displayPopUp () {
-    const btnOpenModal = document.querySelector(".btnOpenModal");
-    const popupBackground = document.querySelector(".popupBackground");
-    const iconCloseModal = document.querySelector(".close_modal");
-    btnOpenModal.addEventListener("click", () => {
-        popupBackground.style.display = "block";
+const addProjectForm = document.getElementById("add_project");
+addProjectForm.addEventListener("submit", async function (event) {
+    event.preventDefault();
+    const newProject = {
+        image: event.target.querySelector("[name=image]").value,
+        title: event.target.querySelector("[name=title]").value,
+        category: event.target.querySelector("[name=category]").value,
+    };
+    const POSTrequest = await fetch("http://localhost:5678/api/works", {
+        method: "POST",
+        body: JSON.stringify(newProject),
+        headers: {
+            "Authorization": `Bearer ${logs}`,
+            "Content-Type": "application/json"
+        },
     });
-    iconCloseModal.addEventListener("click", () => {
-        popupBackground.style.display = "none";
-    });
-    popupBackground.addEventListener("click", (event) => {
-        if (event.target === popupBackground) {
-            popupBackground.style.display = "none";
-        };
-    });
-};
-*/
+    if (POSTrequest.status === 200) {console.log("Success!");}
+    else {console.log("Erreur")};
+})
