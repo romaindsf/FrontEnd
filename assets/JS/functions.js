@@ -144,6 +144,12 @@ function displayAddProjectPopUp (popupBackground) {
     });
 }
 
+function addProject() {
+    const newProject = {
+        
+    }
+}
+
 export {
     generrateportfolio,
     filterButton,
@@ -155,4 +161,5 @@ export {
     generateGridPopUp,
     removeProject,
     displayAddProjectPopUp,
+    addProject,
 };

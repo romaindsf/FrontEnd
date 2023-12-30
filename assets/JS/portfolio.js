@@ -9,6 +9,7 @@ import {
     generateGridPopUp,
     removeProject,
     displayAddProjectPopUp,
+    addProject,
 } from "./functions.js";
 
 

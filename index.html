@@ -91,12 +91,13 @@
 			</div>
 			<section id="add_project">
 				<h3>Ajout photo</h3>
-				<div class="add_picture">
-					<i class="fa-regular fa-image"></i>
-					<h4>+ Ajouter photo</h4>
-					<p>jpg, png : 4mo max</p>
-				</div>
 				<form action="#" method="post">
+					<label class="add_picture" for="image">
+						<i class="fa-regular fa-image"></i>
+						<h4>+ Ajouter photo</h4>
+						<p>jpg, png : 4mo max</p>
+					</label>
+					<input type="file" id="image" name="image" accept="image/png, image/jpeg" />
 					<label for="title">Titre</label>
 					<input type="text" id="title" name="title">
 					<label for="category">Catégorie</label>
