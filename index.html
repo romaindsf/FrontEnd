@@ -71,18 +71,47 @@
 			</ul>
 		</nav>
 	</footer>
-		<div class="popupBackground">
-			<div class="popup">
-				<div class="close_modal">
-					<i class="fa-solid fa-xmark"></i>
-				</div>
-				<h3>Galerie photo</h3>
-				<div class="grid_thumbnail">
-					<!-- grid photos projets -->
-				</div>
-				<button type="button">Ajouter une photo</button>
+	<div class="popupBackground">
+		<div class="popup">
+			<div class="nav_popup">
+				<i class="close_modal fa-solid fa-xmark"></i>
 			</div>
+			<h3>Galerie photo</h3>
+			<div class="grid_thumbnail">
+				<!-- grid photos projets -->
+			</div>
+			<button type="button">Ajouter une photo</button>
 		</div>
+	</div>
+	<div class="add_project_background">
+		<div class="add_project_popup">
+			<div class="nav_add_project">
+				<i class="fa-solid fa-arrow-left"></i>
+				<i class="close_popup fa-solid fa-xmark"></i>
+			</div>
+			<section id="add_project">
+				<h3>Ajout photo</h3>
+				<form action="#" method="post">
+					<label class="add_picture" for="image">
+						<i class="fa-regular fa-image"></i>
+						<h4>+ Ajouter photo</h4>
+						<p>jpg, png : 4mo max</p>
+					</label>
+					<input type="file" id="image" name="image" accept="image/png, image/jpeg" />
+					<label for="title">Titre</label>
+					<input type="text" id="title" name="title">
+					<label for="category">Catégorie</label>
+					<select name="category" id="category">
+						<option value="" hidden></option>
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="2">Hotels & restaurants</option>
+					</select>
+				</form>
+				<input type="submit" value="Valider">
+			</section>
+		</div>
+	</div>
 </div>
 </body>
 </html>

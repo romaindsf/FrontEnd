@@ -209,7 +209,8 @@ li:hover {
 	margin-bottom: 20px;
 }
 #contact form,
-#logIn form {
+#logIn form,
+#add_project form {
 	text-align: left;
 	margin-top:30px;
 	display: flex;
@@ -217,14 +218,17 @@ li:hover {
 }
 
 #contact input,
-#logIn input {
+#logIn input,
+#add_project input,
+#add_project select {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 #contact label,
-#logIn label{
+#logIn label,
+#add_project label {
 	margin: 2em 0 1em 0;
 }
 #contact textarea {
@@ -232,7 +236,7 @@ li:hover {
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
-input[type="submit"]{
+input[type="submit"] {
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -264,7 +268,8 @@ footer nav ul {
 }
 
 /* popup */
-.popupBackground {
+.popupBackground,
+.add_project_background {
 	display: none;
 	position: fixed;
 	top: 0;
@@ -274,7 +279,8 @@ footer nav ul {
 	background-color: #0000004D;
 }
 
-.popup {
+.popup,
+.add_project_popup {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -289,13 +295,27 @@ footer nav ul {
     display: flex !important;
 }
 
-.close_modal {
+.nav_popup {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.fa-xmark,
+.fa-arrow-left {
+	cursor: pointer;
+}
+/* 
+.close_modal,
+.close_popup {
 	width: fit-content;
 	display: block;
 	margin-left: auto;
 	padding: 3px;
 	margin-bottom: 10px;
+	cursor: pointer;
 }
+
+*/
 
 .edit_banner {
 	width: 100%;
@@ -334,6 +354,7 @@ footer nav ul {
 	position: absolute;
 	top: 0;
 	right: 0;
+	cursor: pointer;
 }
 
 .popup button {
@@ -344,4 +365,88 @@ footer nav ul {
 	color: white;
 	border-radius: 50px;
 	padding: 10px 50px;
+	border: none;
+	outline: none;
+}
+
+#add_project {
+	margin: 0 55px;
+}
+
+#add_project .add_picture {
+	cursor: pointer;
+}
+
+#add_project h3 {
+	margin: 10px 0 36px 0;
+}
+
+#add_project form {
+	padding-bottom: 47px;
+	border-bottom: 1px solid #B3B3B3;
+}
+
+#add_project select {
+	cursor: pointer;
+	-webkit-appearance: none;
+  	-moz-appearance: none;
+  	appearance: none;
+	background: url(./icons/chevron-down-solid.png) no-repeat 94% 50%;
+}
+
+#add_project select:focus {
+	outline: none;
+}
+
+#add_project input[type="submit"] {
+	display: inline-flex;
+	justify-content: center;
+	background-color: #A7A7A7;
+	font-family: 'Syne';
+	font-size: 14px;
+	font-weight: 700;
+	color: #FFFFFF;
+	padding: 10px 115px;
+	margin-top: 32px;
+}
+
+.nav_add_project {
+	display: flex;
+	justify-content: space-between;
+}
+
+.add_picture {
+	background-color: #E8F1F6;
+	padding: 20px 123px ;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.add_picture i {
+	font-size: 76px;
+	color: #B9C5CC;
+	text-align: center;
+}
+
+.add_picture h4 {
+	font-size: 14px;
+	color: #306685;
+	font-family:  'Work Sans';
+	font-weight: 500;
+	padding: 10px 33px;
+	margin: 7px 0;
+	background-color: #CBD6DC;
+	border-radius: 50px;
+}
+
+.add_picture p {
+	text-align: center;
+	font-family:  'Work Sans';
+	font-weight: 400;
+	font-size: 10px;
+}
+
+input[type="file"] {
+	display: none;
 }

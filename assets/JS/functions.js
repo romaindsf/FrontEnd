@@ -61,19 +61,18 @@ function hideFilterButtons (btnCategories) {
     });
 };
 
-function displayPopUp () {
+function displayPopUp (popupBackground) {
     const btnOpenModal = document.querySelector(".btnOpenModal");
-    const popupBackground = document.querySelector(".popupBackground");
     const iconCloseModal = document.querySelector(".close_modal");
     btnOpenModal.addEventListener("click", () => {
-        popupBackground.style.display = "block";
+        popupBackground.classList.add("active");
     });
     iconCloseModal.addEventListener("click", () => {
-        popupBackground.style.display = "none";
+        popupBackground.classList.remove("active");
     });
     popupBackground.addEventListener("click", (event) => {
         if (event.target === popupBackground) {
-            popupBackground.style.display = "none";
+            popupBackground.classList.remove("active")
         };
     });
 };
@@ -92,39 +91,73 @@ function generateGridPopUp (projects) {
     };
 };
 
-/*
-supprimer des projets depuis la modal en cliquant sur l'icone trashcan
-    -seletionne l'icone trash
-    -lier icône trash au projet respectif
-        (chaque projet a deja un data-category)
-        -verification admin est connecté
-            (s'inspirer du log in, if logs != null)
-        -requête delete a l'api du projet
-            (regarder swagger)
-        -enleve projet (display none) du portfolio
-            (s'inspirer des btn categories)
-
-
-
-*/
-
 function removeProject(projects, logs) {
+    const listProjet = document.querySelectorAll(".gallery figure");
+    const listThumbnail = document.querySelectorAll(".grid_thumbnail div");
     const allTrashIcons = document.querySelectorAll(".grid_thumbnail i");
     for (let i = 0; i< projects.length; i++) {
+        listProjet[i].dataset.id = projects[i].id;
+        listThumbnail[i].dataset.id = projects[i].id;
         allTrashIcons[i].dataset.id = projects[i].id;
         allTrashIcons[i].addEventListener("click", async (event) => {
-            if (logs != null) {
-                const resquestRemoveProject = await fetch(`http://localhost:5678/api/works/${event.target.dataset.id}`, {
-                    method: "DELETE",
-                    headers: {
-                        "Authorization": "logs",
-                        "Content-Type": "application/json"
-                    },
-                });
-            };
+            await fetch(`http://localhost:5678/api/works/${event.target.dataset.id}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${logs}`,
+                    "Content-Type": "application/json"
+                },
+            });
+            listThumbnail.forEach(thumbnail => {
+                if (event.target.dataset.id === thumbnail.dataset.id) {
+                    thumbnail.remove();
+                };
+            });
+            listProjet.forEach(projet => {
+                if (event.target.dataset.id === projet.dataset.id) {
+                    projet.remove();
+                };
+            });
         });
     };
 };
+
+function displayAddProjectPopUp (popupBackground) {
+    const btnAddProject = document.querySelector(".popup button");
+    const addProjectBackground = document.querySelector(".add_project_background");
+    const closepopup = document.querySelector(".close_popup")
+    const goBack = document.querySelector(".fa-arrow-left")
+    btnAddProject.addEventListener("click", () => {
+        popupBackground.classList.remove("active");
+        addProjectBackground.classList.add("active");
+    })
+    closepopup.addEventListener("click", () => {
+        addProjectBackground.classList.remove("active");
+    });
+    goBack.addEventListener("click", () => {
+        addProjectBackground.classList.remove("active");
+        popupBackground.classList.add("active");
+    })
+    addProjectBackground.addEventListener("click", (event) => {
+        if (event.target === addProjectBackground) {
+            addProjectBackground.classList.remove("active");
+        };
+    });
+}
+
+/*
+function addProject(event) {
+    const addProjectForm = document.getElementById("add_project");
+    const newProject = {
+        image: event.target.querySelector("[name=image]").value,
+        title: event.target.querySelector("[name=title]").value,
+        category: event.target.querySelector("[name=category]").value,
+    };
+    addProjectForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        console.log(newProject)
+    })
+};
+*/
 
 export {
     generrateportfolio,
@@ -136,6 +169,5 @@ export {
     displayPopUp,
     generateGridPopUp,
     removeProject,
+    displayAddProjectPopUp,
 };
-
-//http://localhost:5678/images/appartement-paris-v1651287270508.png
