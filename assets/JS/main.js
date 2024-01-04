@@ -11,7 +11,8 @@ import {
     displayAddProjectPopUp,
     addImage,
     addProject,
-} from "./functions.js";
+} from "./f_portfolio.js"; "./f_loggedIn.js"; "./f_modal_rm.js"; "./f_modal_add.js";
+
 
 const responseWorks = await fetch("http://localhost:5678/api/works");
 const projects = await responseWorks.json();

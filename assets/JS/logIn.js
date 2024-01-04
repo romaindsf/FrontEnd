@@ -1,7 +1,3 @@
-//Déclarer Variable
-// const emailRegex = /\S+@\S+\.\S+/
-
-//Formulaire
 function attemptLogIn () {
     const loginForm = document.getElementById("logIn");
     loginForm.addEventListener("submit", async function (event) {
@@ -34,12 +30,3 @@ function attemptLogIn () {
 }
 
 attemptLogIn();
-
-//     if (emailRegex.test(event.target.querySelector("[name=email]").value)) {
-//         attemptLogIn(event);
-//     } else {
-//         document.querySelector("[name=email]")
-//             .classList.add("invalid")
-//         const messError = document.createElement("p").textContent("E-mail invalide.");
-//         loginForm.insertBefore(messError, loginForm.childNodes[2]);
-//     };
