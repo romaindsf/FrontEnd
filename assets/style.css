@@ -402,7 +402,7 @@ footer nav ul {
 	font-weight: 700;
 	color: #FFFFFF;
 	padding: 10px 115px;
-	margin-top: 32px;
+	margin-top: 80px;
 }
 
 .nav_add_project {
@@ -412,6 +412,7 @@ footer nav ul {
 
 .add_picture {
 	background-color: #E8F1F6;
+	height: 170px;
 	padding: 20px 123px ;
 	display: flex;
 	flex-direction: column;
@@ -444,9 +445,22 @@ footer nav ul {
 
 .add_picture img {
 	object-fit: cover;
-	width: 100%;
+	height: 100%;
 }
 
 input[type="file"] {
 	display: none;
+}
+
+label[for=category] {
+	position: relative;
+}
+label[for=category]::after {
+		content: "";
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 47px;
+		top: 80px;
+		border-bottom: 1px solid #B3B3B3;
 }
