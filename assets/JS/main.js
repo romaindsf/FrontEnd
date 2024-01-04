@@ -1,18 +1,26 @@
 import {
     generrateportfolio,
     filterButton,
+    
+} from "./f_portfolio.js";
+import {
     displayLogout,
     displayEditBanner,
     displayModifs,
-    hideFilterButtons,
+    hideFilterButtons
+} from "./f_loggedIn.js";
+
+import { 
     displayPopUp,
     generateGridPopUp,
     removeProject,
+ } from "./f_modal_rm.js";
+
+import {
     displayAddProjectPopUp,
     addImage,
     addProject,
-} from "./f_portfolio.js"; "./f_loggedIn.js"; "./f_modal_rm.js"; "./f_modal_add.js";
-
+} from "./f_modal_add.js";
 
 const responseWorks = await fetch("http://localhost:5678/api/works");
 const projects = await responseWorks.json();
