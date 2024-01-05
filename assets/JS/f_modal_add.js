@@ -65,9 +65,11 @@ function validateInputs (addProjectForm) {
     const inputImage = document.getElementById("image");
     const inputTitle = document.getElementById("title");
     const selectCategory = document.getElementById("category");
-    addProjectForm.addEventListener("change", (event) => {
+    const btnSubmit = document.querySelector("#add_project [type=submit]");
+    btnSubmit.setAttribute("disabled", "")
+    addProjectForm.addEventListener("change", () => {
         if (inputImage.files.length > 0 && inputTitle.value != "" && selectCategory.value != "") {
-            const btnSubmit = document.querySelector("#add_project [type=submit]");
+            btnSubmit.removeAttribute("disabled")
             btnSubmit.style.backgroundColor = "#1D6154";
             btnSubmit.style.cursor = "pointer";
         }
