@@ -54,6 +54,7 @@ function addImage (inputAddImage, DivPreviewImage) {
                 previewImage.src = event.target.result;
                 DivPreviewImage.style.paddingTop = "0";
                 DivPreviewImage.style.paddingBottom = "0";
+                DivPreviewImage.style.height = "210px";
                 DivPreviewImage.appendChild(previewImage);
             };
             reader.readAsDataURL(image);
@@ -69,10 +70,10 @@ function validateInputs (addProjectForm) {
     btnSubmit.setAttribute("disabled", "")
     addProjectForm.addEventListener("change", () => {
         if (inputImage.files.length > 0 && inputTitle.value != "" && selectCategory.value != "") {
-            btnSubmit.removeAttribute("disabled")
+            btnSubmit.removeAttribute("disabled");
             btnSubmit.style.backgroundColor = "#1D6154";
             btnSubmit.style.cursor = "pointer";
-        }
+        };
     });
 };
 
