@@ -54,7 +54,7 @@ if (logs != null) {
     displayAddProjectPopUp(popupBackground);
     formListCategory(categories);
     addImage(inputAddImage, DivPreviewImage);
-    addProject(addProjectForm, logs, projects);
+    addProject(addProjectForm, logs);
 } else {
     filterButton(categories, btnCategories, btnAll);
 };
