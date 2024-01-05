@@ -23,6 +23,10 @@ function displayAddProjectPopUp (popupBackground) {
 
 function formListCategory (categories) {
     const selectCategory = document.getElementById("category");
+    const hiddenOption = document.createElement("option");
+    hiddenOption.setAttribute("value", "");
+    hiddenOption.setAttribute("hidden", "hidden");
+    selectCategory.appendChild(hiddenOption)
     for (let i = 0; i < categories.length; i++) {
         const option = document.createElement("option");
         option.setAttribute("value", [i + 1]);
