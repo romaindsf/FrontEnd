@@ -10,7 +10,7 @@ function displayEditBanner () {
     const editionBanner = document.createElement("p");
     editionBanner.innerHTML += `<i class="fa-regular fa-pen-to-square"></i>Mode edition`;
     editionBanner.classList.add("edit_banner");
-    document.body.prepend(editionBanner);   //à la place de .appendChild, place l'élément enfant en premier
+    document.body.prepend(editionBanner);
 };
 
 function displayModifs (portfolio) {

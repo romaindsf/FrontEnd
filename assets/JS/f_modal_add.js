@@ -34,47 +34,73 @@ function formListCategory (categories) {
 function addImage (inputAddImage, DivPreviewImage) {
     inputAddImage.addEventListener("change", (event) => {
         const image = event.target.files[0];
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            const divAddPictureContent = document.querySelectorAll(".add_picture *");
-            divAddPictureContent.forEach(element => {
-                element.style.display = "none";
-            });
-            const previewImage = document.createElement("img");
-            previewImage.src = event.target.result;
-            DivPreviewImage.appendChild(previewImage);
+        if (image.size > 4194304) {
+            const imgTooBig = document.querySelector(".add_picture p")
+            imgTooBig.textContent = "La taille de l'image est trop élevée.";
+            imgTooBig.style.color = "red";
+            imgTooBig.style.textDecoration = "underline";
+        } else {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const divAddPictureContent = document.querySelectorAll(".add_picture *");
+                divAddPictureContent.forEach(element => {
+                    element.style.display = "none";
+                });
+                const previewImage = document.createElement("img");
+                previewImage.src = event.target.result;
+                DivPreviewImage.style.paddingTop = "0";
+                DivPreviewImage.style.paddingBottom = "0";
+                DivPreviewImage.appendChild(previewImage);
+            };
+            reader.readAsDataURL(image);
         };
-        reader.readAsDataURL(image);
     });
 };
 
-//fonction valider le contenu du formulaire
-//le bouton devient alors clickable et passer au vert
+function validateInputs (addProjectForm) {
+    const inputImage = document.getElementById("image");
+    const inputTitle = document.getElementById("title");
+    const selectCategory = document.getElementById("category");
+    addProjectForm.addEventListener("change", (event) => {
+        if (inputImage.files.length > 0 && inputTitle.value != "" && selectCategory.value != "") {
+            const btnSubmit = document.querySelector("#add_project [type=submit]");
+            btnSubmit.style.backgroundColor = "#1D6154";
+            btnSubmit.style.cursor = "pointer";
+        }
+    });
+};
 
 async function addProject (addProjectForm, logs) {
     addProjectForm.addEventListener("submit", async function (event) {
         event.preventDefault();
+        const errorMessage = document.querySelector(".error_info");
         const newProject = new FormData();
-            newProject.append("image", event.target.querySelector("[name=image]").files[0]);
-            newProject.append("title", event.target.querySelector("[name=title]").value);
-            newProject.append("category", event.target.querySelector("[name=category]").value);
+        newProject.append("image", event.target.querySelector("[name=image]").files[0]);
+        newProject.append("title", event.target.querySelector("[name=title]").value);
+        newProject.append("category", event.target.querySelector("[name=category]").value);
         const POSTrequest = await fetch("http://localhost:5678/api/works", {
-            method: "POST",
-            body: newProject,
-            headers: {"Authorization": `Bearer ${logs}`},
+        method: "POST",
+        body: newProject,
+        headers: {"Authorization": `Bearer ${logs}`},
         });
-        const infoNewProject = await POSTrequest.json();
-        console.log(infoNewProject);
-        const divGallery = document.querySelector(".gallery");
-        const projetElement = document.createElement("figure");
-        projetElement.dataset.category = infoNewProject.categoryId;
-        const imgElement = document.createElement("img");
-        imgElement.src = infoNewProject.imageUrl;
-        const titleElement = document.createElement("figcaption");
-        titleElement.textContent =infoNewProject.title;
-        divGallery.appendChild(projetElement);
-        projetElement.appendChild(imgElement);
-        projetElement.appendChild(titleElement);
+            if (POSTrequest.status === 201) {
+            errorMessage.textContent = "";
+            const infoNewProject = await POSTrequest.json();
+            const divGallery = document.querySelector(".gallery");
+            const projetElement = document.createElement("figure");
+            projetElement.dataset.category = infoNewProject.categoryId;
+            const imgElement = document.createElement("img");
+            imgElement.src = infoNewProject.imageUrl;
+            const titleElement = document.createElement("figcaption");
+            titleElement.textContent =infoNewProject.title;
+            divGallery.appendChild(projetElement);
+            projetElement.appendChild(imgElement);
+            projetElement.appendChild(titleElement);
+        } else {
+            errorMessage.textContent = "les informations renseignées ne sont pas valides";
+            errorMessage.style.color = "red";
+            errorMessage.style.textAlign = "center";
+        };
     });
 };
 
@@ -82,5 +108,6 @@ export {
     displayAddProjectPopUp,
     formListCategory,
     addImage,
+    validateInputs,
     addProject,
 }

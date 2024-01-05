@@ -8,19 +8,20 @@ import {
     displayLogout,
     displayEditBanner,
     displayModifs,
-    hideFilterButtons
+    hideFilterButtons,
 } from "./f_loggedIn.js";
 
 import { 
     displayPopUp,
     generateGridPopUp,
     removeProject,
- } from "./f_modal_rm.js";
+} from "./f_modal_rm.js";
 
 import {
     displayAddProjectPopUp,
     formListCategory,
     addImage,
+    validateInputs,
     addProject,
 } from "./f_modal_add.js";
 
@@ -54,32 +55,8 @@ if (logs != null) {
     displayAddProjectPopUp(popupBackground);
     formListCategory(categories);
     addImage(inputAddImage, DivPreviewImage);
+    validateInputs(addProjectForm);
     addProject(addProjectForm, logs);
 } else {
     filterButton(categories, btnCategories, btnAll);
 };
-
-
-
-
-/*
-ajouter listenner change dans le form add
-si tous les champs sont valides alors le boutons passent aux vert
-
-ecouter la réponse de la requête et ensuite l'ajouter au DOM
-
->reindent lines
-pour indenter
-
-mode edition polices a modifier
-
-
-gere verifier les champs lors de l'ajout d'un nouveau projet que le bouton ne soit pas vert DESACTIV2
-AJOUT POID MAINAL CONTRINTE SUR L4INPUT TYPE FILES
-message générique si erreur dans form add project
-"les information ne sont pas celle
-la liste catégoties dynamique
-
-verifier le code a la fin
-console log et w3c
-*/
