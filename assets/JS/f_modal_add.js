@@ -1,6 +1,10 @@
 function resetPreviewImage () {
     const previewImage = document.querySelector("#add_project img");
     const divAddPictureContent = document.querySelectorAll(".add_picture *");
+    const btnSubmit = document.querySelector("#add_project [type=submit]");
+    btnSubmit.setAttribute("disabled", "");
+    btnSubmit.style.backgroundColor = "#A7A7A7";
+    btnSubmit.style.cursor = "unset";
     document.querySelector("#add_project form").reset();
     if (previewImage != null) {
         previewImage.remove();
