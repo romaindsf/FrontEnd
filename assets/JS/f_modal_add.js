@@ -59,10 +59,13 @@ function addImage (inputAddImage, DivPreviewImage) {
     inputAddImage.addEventListener("change", (event) => {
         const image = event.target.files[0];
         if (image.size > 4194304) {
-            const imgTooBig = document.querySelector(".add_picture p")
-            imgTooBig.textContent = "La taille de l'image est trop élevée.";
+            const imgTooBig = document.createElement("span");
+            imgTooBig.innerHTML = "La taille de l'image </br> est trop élevée.";
+            imgTooBig.style.fontSize = "12px";
+            imgTooBig.style.textAlign = "center";
             imgTooBig.style.color = "red";
             imgTooBig.style.textDecoration = "underline";
+            DivPreviewImage.appendChild(imgTooBig);
         } else {
             const reader = new FileReader();
             reader.onload = (event) => {
