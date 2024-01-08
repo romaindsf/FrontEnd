@@ -1,3 +1,14 @@
+function resetPreviewImage () {
+    const previewImage = document.querySelector("#add_project img");
+    const divAddPictureContent = document.querySelectorAll(".add_picture *");
+    if (previewImage != null) {
+        previewImage.remove();
+        divAddPictureContent.forEach(element => {
+            element.style.display = "block";
+        });
+    };
+};
+
 function displayAddProjectPopUp (popupBackground) {
     const btnAddProject = document.querySelector(".popup button");
     const addProjectBackground = document.querySelector(".add_project_background");
@@ -8,14 +19,17 @@ function displayAddProjectPopUp (popupBackground) {
         addProjectBackground.classList.add("active");
     })
     closepopup.addEventListener("click", () => {
+        resetPreviewImage()
         addProjectBackground.classList.remove("active");
     });
     goBack.addEventListener("click", () => {
+        resetPreviewImage()
         addProjectBackground.classList.remove("active");
         popupBackground.classList.add("active");
     })
     addProjectBackground.addEventListener("click", (event) => {
         if (event.target === addProjectBackground) {
+            resetPreviewImage()
             addProjectBackground.classList.remove("active");
         };
     });
@@ -77,7 +91,7 @@ function validateInputs (addProjectForm) {
     });
 };
 
-async function addProject (addProjectForm, logs, DivPreviewImage) {
+async function addProject (addProjectForm, logs) {
     addProjectForm.addEventListener("submit", async function (event) {
         event.preventDefault();
         const errorMessage = document.querySelector(".error_info");
@@ -103,14 +117,7 @@ async function addProject (addProjectForm, logs, DivPreviewImage) {
             divGallery.appendChild(projetElement);
             projetElement.appendChild(imgElement);
             projetElement.appendChild(titleElement);
-            document.querySelector("#add_project form").reset();
-            const previewImage = document.querySelector("#add_project img")
-            previewImage.remove();
-            const divAddPictureContent = document.querySelectorAll(".add_picture *");
-                divAddPictureContent.forEach(element => {
-                    element.style.display = "block";
-                });
-            
+            resetPreviewImage()
         } else {
             errorMessage.textContent = "les informations renseignées ne sont pas valides";
             errorMessage.style.color = "red";
