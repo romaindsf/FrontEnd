@@ -1,4 +1,4 @@
-function resetPreviewImage () {
+function resetform () {
     const previewImage = document.querySelector("#add_project img");
     const divAddPictureContent = document.querySelectorAll(".add_picture *");
     const btnSubmit = document.querySelector("#add_project [type=submit]");
@@ -20,22 +20,22 @@ function displayAddProjectPopUp (popupBackground) {
     const closepopup = document.querySelector(".close_popup")
     const goBack = document.querySelector(".fa-arrow-left")
     btnAddProject.addEventListener("click", () => {
-        resetPreviewImage();
+        resetform();
         popupBackground.classList.remove("active");
         addProjectBackground.classList.add("active");
     })
     closepopup.addEventListener("click", () => {
-        resetPreviewImage()
+        resetform()
         addProjectBackground.classList.remove("active");
     });
     goBack.addEventListener("click", () => {
-        resetPreviewImage()
+        resetform()
         addProjectBackground.classList.remove("active");
         popupBackground.classList.add("active");
     })
     addProjectBackground.addEventListener("click", (event) => {
         if (event.target === addProjectBackground) {
-            resetPreviewImage()
+            resetform()
             addProjectBackground.classList.remove("active");
         };
     });
@@ -123,7 +123,7 @@ async function addProject (addProjectForm, logs) {
             divGallery.appendChild(projetElement);
             projetElement.appendChild(imgElement);
             projetElement.appendChild(titleElement);
-            resetPreviewImage()
+            resetform()
         } else {
             errorMessage.textContent = "les informations renseignées ne sont pas valides";
             errorMessage.style.color = "red";
