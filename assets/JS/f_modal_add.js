@@ -89,7 +89,7 @@ function validateInputs (addProjectForm) {
     const btnSubmit = document.querySelector("#add_project [type=submit]");
     btnSubmit.setAttribute("disabled", "")
     addProjectForm.addEventListener("change", () => {
-        if (inputImage.files.length > 0 && inputTitle.value != "" && selectCategory.value != "") {
+        if (inputImage.files.length > 0 && inputTitle.value.trim() != "" && selectCategory.value != "") {
             btnSubmit.removeAttribute("disabled");
             btnSubmit.style.backgroundColor = "#1D6154";
             btnSubmit.style.cursor = "pointer";
