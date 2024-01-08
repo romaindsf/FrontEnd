@@ -1,7 +1,7 @@
 import {
     generrateportfolio,
+    generateFilterButton,
     filterButton,
-    
 } from "./f_portfolio.js";
 
 import {
@@ -33,11 +33,10 @@ const categories = await responseCategories.json();
 let logs = window.localStorage.getItem("logs");
 const divGallery = document.querySelector(".gallery");
 const portfolio = document.querySelector("#portfolio");
-const btnCategories = document.querySelectorAll(".btn");
-const btnAll = document.querySelector(".filtres .btn:first-child");
 const logIn = document.querySelector('nav a[href="./login.html"]');
 const popupBackground = document.querySelector(".popupBackground");
 const addProjectForm = document.getElementById("add_project");
+const addForm = document.querySelector("#add_project form");
 const inputAddImage = document.querySelector("[type=file]");
 const DivPreviewImage = document.querySelector(".add_picture");
 
@@ -48,15 +47,16 @@ if (logs != null) {
     displayLogout(logIn);
     displayEditBanner();
     displayModifs(portfolio);
-    hideFilterButtons(btnCategories);
+    hideFilterButtons();
     displayPopUp(popupBackground);
     generateGridPopUp(projects);
     removeProject(projects,logs);
-    displayAddProjectPopUp(popupBackground);
+    displayAddProjectPopUp(popupBackground, addForm, DivPreviewImage);
     formListCategory(categories);
     addImage(inputAddImage, DivPreviewImage);
     validateInputs(addProjectForm);
-    addProject(addProjectForm, logs);
+    addProject(addProjectForm, logs, DivPreviewImage);
 } else {
-    filterButton(categories, btnCategories, btnAll);
+    generateFilterButton(categories);
+    filterButton(categories);
 };

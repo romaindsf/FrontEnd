@@ -77,7 +77,7 @@ function validateInputs (addProjectForm) {
     });
 };
 
-async function addProject (addProjectForm, logs) {
+async function addProject (addProjectForm, logs, DivPreviewImage) {
     addProjectForm.addEventListener("submit", async function (event) {
         event.preventDefault();
         const errorMessage = document.querySelector(".error_info");
@@ -103,6 +103,14 @@ async function addProject (addProjectForm, logs) {
             divGallery.appendChild(projetElement);
             projetElement.appendChild(imgElement);
             projetElement.appendChild(titleElement);
+            document.querySelector("#add_project form").reset();
+            const previewImage = document.querySelector("#add_project img")
+            previewImage.remove();
+            const divAddPictureContent = document.querySelectorAll(".add_picture *");
+                divAddPictureContent.forEach(element => {
+                    element.style.display = "block";
+                });
+            
         } else {
             errorMessage.textContent = "les informations renseignées ne sont pas valides";
             errorMessage.style.color = "red";

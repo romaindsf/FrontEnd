@@ -12,8 +12,27 @@ function generrateportfolio (projects, divGallery) {
     };
 };
 
-function filterButton (categories, btnCategories, btnAll) {
+function generateFilterButton (categories) {
+    const divFiltres = document.querySelector(".filtres");
+    const btnAll = document.createElement("button");
+    btnAll.classList.add("btn");
+    btnAll.setAttribute("type", "button");
+    btnAll.textContent = "Tous";
+    divFiltres.appendChild(btnAll);
+    for (let i = 0; i < categories.length; i++) {
+        const btnFiltres = document.createElement("button");
+        btnFiltres.classList.add("btn");
+        btnFiltres.setAttribute("type", "button");
+        btnFiltres.textContent = categories[i].name;
+        divFiltres.appendChild(btnFiltres)
+        
+    };
+};
+
+function filterButton (categories) {
     const listProjet = document.querySelectorAll(".gallery figure");
+    const btnAll = document.querySelector(".filtres .btn:first-child");
+    const btnCategories = document.querySelectorAll(".btn");
     for(let i = 1; i < btnCategories.length; i++) {
         btnCategories[i].dataset.id = categories[i - 1].id;
         btnCategories[i].addEventListener("click", (event) => {
@@ -34,5 +53,6 @@ function filterButton (categories, btnCategories, btnAll) {
 
 export {
     generrateportfolio,
+    generateFilterButton,
     filterButton,
 };

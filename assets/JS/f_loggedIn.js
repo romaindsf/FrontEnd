@@ -21,7 +21,8 @@ function displayModifs (portfolio) {
     portfolio.appendChild(linkModifs);
 };
 
-function hideFilterButtons (btnCategories) {
+function hideFilterButtons () {
+    const btnCategories = document.querySelectorAll(".btn");
     btnCategories.forEach(button => {
         button.style.display = "none";
     });
