@@ -1,6 +1,7 @@
 function resetPreviewImage () {
     const previewImage = document.querySelector("#add_project img");
     const divAddPictureContent = document.querySelectorAll(".add_picture *");
+    document.querySelector("#add_project form").reset();
     if (previewImage != null) {
         previewImage.remove();
         divAddPictureContent.forEach(element => {
@@ -15,6 +16,7 @@ function displayAddProjectPopUp (popupBackground) {
     const closepopup = document.querySelector(".close_popup")
     const goBack = document.querySelector(".fa-arrow-left")
     btnAddProject.addEventListener("click", () => {
+        resetPreviewImage();
         popupBackground.classList.remove("active");
         addProjectBackground.classList.add("active");
     })
